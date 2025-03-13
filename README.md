@@ -1,0 +1,1 @@
+# xterns-Azure-DevOps-Pod-A-Jan2025-SHALI-Terraform
