@@ -1,0 +1,8 @@
+resource "azurerm_virtual_hub" "this" {
+  name                = "${var.virtual_wan_name}-hub"
+  location            = var.virtual_wan_location
+  resource_group_name = var.resource_group_name
+  virtual_wan_id      = azurerm_virtual_wan.this.id
+  address_prefix      = var.virtual_hub_address_prefix
+  tags                = var.virtual_wan_tags
+}

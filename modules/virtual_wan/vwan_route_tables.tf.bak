@@ -1,0 +1,17 @@
+resource "azurerm_virtual_hub_route_table" "this" {
+  for_each      = { for idx, rt in var.virtual_wan_route_tables : idx => rt }
+  name          = each.value.name
+  virtual_hub_id = azurerm_virtual_hub.this.id
+
+  dynamic "route" {
+    for_each = each.value.routes
+    content {
+      name                = route.value.name
+      destinations        = route.value.destinations
+      destinations_type   = route.value.destinations_type  # Ensure this is used
+      next_hop_type       = route.value.next_hop_type
+      next_hop            = route.value.next_hop
+      next_hop_ip_address = route.value.next_hop_ip_address
+    }
+  }
+}

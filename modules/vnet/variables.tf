@@ -8,17 +8,22 @@ variable "location" {
   type        = string
 }
 
+variable "resource_group_name" {
+  description = "The name of the existing Azure Resource Group"
+  type        = string
+}
+
 variable "address_space" {
   description = "The address space for the VNet"
   type        = list(string)
 }
 
-variable "tags" {
+variable "vnet_tags" {
   description = "Tags to assign to the VNet"
   type        = map(string)
 }
 
-variable "resource_group_name" {
-  description = "The name of the existing Azure Resource Group"
+variable "environment" {
+  description = "Deployment environment (sandbox, staging, production)"
   type        = string
 }
