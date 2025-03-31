@@ -1,50 +1,50 @@
-variable "subscription_id" {
-  type        = string
-  description = "Azure Subscription ID"
-}
-
-variable "tenant_id" {
-  type        = string
-  description = "Azure Tenant ID"
-}
-
 variable "environment" {
+  description = "Deployment environment (e.g., sandbox, staging, production)"
   type        = string
-  description = "Deployment environment (sandbox/staging/production)"
 }
 
 variable "vm_name" {
-  type        = string
   description = "Name of the virtual machine"
+  type        = string
 }
 
 variable "resource_group_name" {
+  description = "Azure resource group name"
   type        = string
-  description = "Resource group name"
 }
 
 variable "location" {
+  description = "Azure region for deployment"
   type        = string
-  description = "Azure region"
 }
 
 variable "instance_type" {
+  description = "Size of the VM instance"
   type        = string
-  description = "VM size/instance type"
 }
 
 variable "subnet_id" {
+  description = "ID of the subnet where the VM will be placed"
   type        = string
-  description = "Subnet ID for the VM"
 }
 
 variable "ssh_public_key" {
+  description = "SSH public key for authentication"
   type        = string
-  description = "SSH public key for VM access"
 }
 
 variable "default_tags" {
+  description = "Default tags for resources"
   type        = map(string)
-  description = "Default tags to apply to resources"
   default     = {}
+}
+
+variable "image_name" {
+  type = string
+  description = "value for the image name"
+}
+
+variable "key_pair_name" {
+  description = "Name of the SSH key pair"
+  type        = string
 }

@@ -1,11 +1,15 @@
-environment         = "staging"
-vm_name             = "Staging-webserver"
+environment = "staging"
+# image_name          = "myPackerImage"
+vm_name             = "xtern-vm-webserver"
 resource_group_name = "xterns-pod"
-location            = "east us"
-instance_type       = "BIs"
-subnet_id           = "/subscriptions/xxx/resourceGroups/xterns-pod/providers/Microsoft.Network/virtualNetworks/vnet/subnets/default"
-ssh_public_key      = "ssh-rsa AAAAB3NzaC1yc2E..."
+location            = "East US"
+# image_sku           = "22_04-lts"
+instance_type  = "Standard_B1s"
+subnet_id      = "/subscriptions/xxxx/resourceGroups/xterns-pod/providers/Microsoft.Network/virtualNetworks/lekan_trial/subnets/default"
+ssh_public_key = "ssh-rsa ...."
+
 default_tags = {
-  project = "azure-Shali-staging"
-  env     = "staging"
+  project    = "my-project"
+  owner      = "lehqandiya@gmail.com"
+  managed_by = "Terraform"
 }

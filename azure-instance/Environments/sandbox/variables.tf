@@ -1,4 +1,4 @@
- variable "environment" {
+variable "environment" {
   type        = string
   description = "Deployment environment (sandbox/staging/production)"
 }
@@ -7,6 +7,12 @@ variable "vm_name" {
   type        = string
   description = "Name of the virtual machine"
 }
+
+variable "image_name" {
+  type        = string
+  description = "myPackerImage"
+}
+
 
 variable "resource_group_name" {
   type        = string
@@ -38,3 +44,8 @@ variable "default_tags" {
   description = "Default tags to apply to resources"
   default     = {}
 }
+
+# variable "image_name" {
+#   type = string
+#   description = "value for the image name"
+# }

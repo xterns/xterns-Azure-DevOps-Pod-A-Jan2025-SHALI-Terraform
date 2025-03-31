@@ -38,3 +38,13 @@ variable "default_tags" {
   description = "Default tags to apply to resources"
   default     = {}
 }
+
+variable "azurerm_network_interface.nic.id" {
+  type = string
+  description = "network interface for nic"
+}
+
+variable "image_name" {
+  type        = string
+  description = "xtern-vm-webserver"
+}

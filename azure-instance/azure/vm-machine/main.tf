@@ -1,43 +1,32 @@
 # Retrieve latest Packer-built image
 data "azurerm_image" "latest" {
-  name_regex          = "^my-packer-image-${var.environment}-.*"
-  resource_group_name = var.resource_group_name
-  sort_descending     = true
+  name                ="xtern-vm-webserver"
+  resource_group_name = "xterns-pod"
 }
 
-# Virtual Machine Resource
+# Deploy Azure Virtual Machine
 resource "azurerm_linux_virtual_machine" "vm" {
-  name                = "${var.environment}-vm-${var.vm_name}"
+ name                = "${var.environment}-vm-${var.vm_name}"
   resource_group_name = var.resource_group_name
   location            = var.location
   size                = var.instance_type
-  admin_username      = "adminuser"
-  
-  network_interface_ids = [
-    azurerm_network_interface.nic.id
-  ]
+  admin_username      = "azureuser"
 
-  source_image_id = data.azurerm_image.latest.id
+  network_interface_ids = [azurerm_network_interface.nic.id]
+     source_image_id = [data.azurerm_image.latest.id]
+
+    admin_ssh_key {
+    username   = "azureuser"
+    public_key = file(var.ssh_public_key)
+  }
 
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
 
-  admin_ssh_key {
-    username   = "adminuser"
-    public_key = var.ssh_public_key
-  }
-
-  tags = merge(
-    var.default_tags,
-    {
-      environment = var.environment
-    }
-  )
 }
-
-# Network Interface
+# Create Network Interface
 resource "azurerm_network_interface" "nic" {
   name                = "${var.environment}-nic-${var.vm_name}"
   location            = var.location
@@ -49,3 +38,4 @@ resource "azurerm_network_interface" "nic" {
     private_ip_address_allocation = "Dynamic"
   }
 }
+

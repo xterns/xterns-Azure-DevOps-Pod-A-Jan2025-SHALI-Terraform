@@ -1,4 +1,4 @@
- variable "environment" {
+variable "environment" {
   type        = string
   description = "Deployment environment (sandbox/staging/production)"
 }
@@ -38,3 +38,6 @@ variable "default_tags" {
   description = "Default tags to apply to resources"
   default     = {}
 }
+
+
+
