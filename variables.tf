@@ -1,9 +1,3 @@
-# Global Variables
-variable "location" {
-  description = "The Azure region where resources are deployed"
-  type        = string
-}
-
 variable "tags" {
   description = "Tags applied to all resources"
   type        = map(string)
@@ -32,5 +26,10 @@ variable "environment" {
 
 variable "subscription_id" {
   description = "Azure Subscription ID"
+  type        = string
+}
+
+variable "location" {
+  description = "The Azure region where resources will be deployed"
   type        = string
 }
