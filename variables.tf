@@ -1,10 +1,16 @@
-variable "vnet_name" {
-  description = "The name of the Virtual Network"
+variable "vnet_tags" {
+  description = "Tags to assign to the VNet"
+  type        = map(string)
+}
+
+# Module Variables
+variable "resource_group_name" {
+  description = "The name of the Azure Resource Group"
   type        = string
 }
 
-variable "location" {
-  description = "Azure region"
+variable "vnet_name" {
+  description = "The name of the Virtual Network"
   type        = string
 }
 
@@ -13,7 +19,17 @@ variable "address_space" {
   type        = list(string)
 }
 
-variable "tags" {
-  description = "Tags to be applied to the resources"
-  type        = map(string)
+variable "environment" {
+  description = "Deployment environment (sandbox, staging, production)"
+  type        = string
+}
+
+variable "subscription_id" {
+  description = "Azure Subscription ID"
+  type        = string
+}
+
+variable "location" {
+  description = "The Azure region where resources will be deployed"
+  type        = string
 }
