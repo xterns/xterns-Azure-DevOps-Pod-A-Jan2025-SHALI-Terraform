@@ -7,6 +7,9 @@ terraform {
   }
 }
 
+
 provider "azurerm" {
   features {}
+  subscription_id                   = "secrets.subscription_id"
+  tenant_id                         = "secrets.tenant_id"     
 }
